@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+.shope-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.text {
+  text-align: center;
+}
