@@ -1,15 +1,7 @@
-import logo from "./logo.svg";
 import "./App.css";
-import products from "./products";
+import GoodsList from "./components/GoodsList";
 
 function App() {
-  const productsList = products.map((product) => (
-    <div className="productIMG" id={product.id}>
-      <img alt={product.name} src={product.image} className="UEFABall" />
-      <p className="text">{product.name}</p>
-      <p className="text">{product.price} KD</p>
-    </div>
-  ));
   return (
     <div>
       <h1 className="text">Zamami Sports</h1>
@@ -19,7 +11,9 @@ function App() {
         className="shope-image"
         alt="shop"
       />
-      <div className="list">{productsList}</div>
+      <div className="list">
+        <GoodsList />
+      </div>
     </div>
   );
 }
