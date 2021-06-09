@@ -1,10 +1,12 @@
+import { SubTitle1, ProductWrapper, ImageSize } from "../styles";
+
 const GoodsItems = (props) => {
   return (
-    <div className="productIMG" id={props.id}>
-      <img alt={props.name} src={props.image} className="UEFABall" />
-      <p className="text">{props.name}</p>
-      <p className="text">{props.price} KD</p>
-    </div>
+    <ProductWrapper id={props.id}>
+      <ImageSize alt={props.name} src={props.image} />
+      <SubTitle1>{props.name}</SubTitle1>
+      <SubTitle1>{props.price} KD</SubTitle1>
+    </ProductWrapper>
   );
 };
 

@@ -1,4 +1,5 @@
 import products from "../products";
+import { ListWrapper } from "../styles";
 import GoodsItems from "./GoodsItems";
 
 const GoodsList = () => {
@@ -10,7 +11,7 @@ const GoodsList = () => {
       key={product.id}
     />
   ));
-  return <div className="list"> {goodsList}</div>;
+  return <ListWrapper> {goodsList}</ListWrapper>;
 };
 
 export default GoodsList;

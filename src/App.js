@@ -1,20 +1,26 @@
+import { ThemeProvider } from "styled-components";
 import "./App.css";
 import GoodsList from "./components/GoodsList";
+import { GolbalStyle, ShopImage, SubTitle, Title, ListWrapper } from "./styles";
+
+const theme = {
+  mainColor: "white",
+  backgroundColor: "cyan",
+  borderColor: "white",
+};
 
 function App() {
   return (
-    <div>
-      <h1 className="text">Zamami Sports</h1>
-      <h3 className="text">All your needs in one place</h3>
-      <img
+    <ThemeProvider theme={theme}>
+      <GolbalStyle />
+      <Title>Zamami Sports</Title>
+      <SubTitle>All your needs in one place</SubTitle>
+      <ShopImage
         src="https://www.nelsonworldwide.com/wp-content/uploads/2019/09/dicks-sporting-goods-06.jpg"
-        className="shope-image"
         alt="shop"
       />
-      <div className="list">
-        <GoodsList />
-      </div>
-    </div>
+      <GoodsList />
+    </ThemeProvider>
   );
 }
 
