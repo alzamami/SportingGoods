@@ -17,21 +17,19 @@ const theme = {
 
 function App() {
   const [webTheme, changeTheme] = useState("light");
-  const [themeName, changeThemeName] = useState("Dark Theme");
-
   const toggleTheme = () => {
     if (webTheme === "light") {
       changeTheme("dark");
-      changeThemeName("Light Theme");
     } else {
       changeTheme("light");
-      changeThemeName("Dark Theme");
     }
   };
   return (
     <ThemeProvider theme={theme[webTheme]}>
       <GolbalStyle />
-      <ThemeButton onClick={toggleTheme}>{themeName}</ThemeButton>
+      <ThemeButton onClick={toggleTheme}>
+        {webTheme === "light" ? "Light" : "Dark"} Theme
+      </ThemeButton>
       <Title>Zamami Sports</Title>
       <SubTitle>All your needs in one place</SubTitle>
       <ShopImage

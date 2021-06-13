@@ -61,3 +61,14 @@ export const ThemeButton = styled.button`
   text-align: center;
   font-weight: 600;
 `;
+
+export const SearchBarStyled = styled.input`
+  width: 50%;
+  align: center;
+  text-align: center;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  height: 25px;
+  margin-top: 10px;
+`;
