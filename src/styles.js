@@ -49,3 +49,15 @@ export const ImageSize = styled.img`
   width: 200px;
   border-radius: 10px;
 `;
+
+export const ThemeButton = styled.button`
+  margin: 20px;
+  background-color: ${(props) => props.theme.mainColor};
+  color: ${(props) => props.theme.backgroundColor};
+  width: 5.5%;
+  height: 35px;
+  border-radius: 5px;
+  font-size: 17.5px;
+  text-align: center;
+  font-weight: 600;
+`;
