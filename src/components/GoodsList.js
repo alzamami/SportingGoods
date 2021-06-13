@@ -13,7 +13,7 @@ const GoodsList = () => {
   const goodsList = products
     .filter(
       (product) =>
-        product.name.toLocaleLowerCase().includes(query) ||
+        product.name.toLowerCase().includes(query.toLowerCase()) ||
         product.price.toString().includes(query)
     )
     .map((product) => (
