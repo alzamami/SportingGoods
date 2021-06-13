@@ -8,7 +8,7 @@ import GoodsItems from "./GoodsItems";
 //Search bar
 import SearchBar from "./SearchBar";
 
-const GoodsList = () => {
+const GoodsList = (props) => {
   const [query, setQuery] = useState("");
   const goodsList = products
     .filter(
@@ -17,12 +17,7 @@ const GoodsList = () => {
         product.price.toString().includes(query)
     )
     .map((product) => (
-      <GoodsItems
-        name={product.name}
-        price={product.price}
-        image={product.image}
-        key={product.id}
-      />
+      <GoodsItems product={product} setProduct={props.setProduct} />
     ));
   return (
     <div>
