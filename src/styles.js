@@ -54,10 +54,10 @@ export const ThemeButton = styled.button`
   margin: 20px;
   background-color: ${(props) => props.theme.mainColor};
   color: ${(props) => props.theme.backgroundColor};
-  width: 5.5%;
+  width: 7.5%;
   height: 35px;
   border-radius: 5px;
-  font-size: 17.5px;
+  font-size: 15px;
   text-align: center;
   font-weight: 600;
 `;
@@ -71,4 +71,27 @@ export const SearchBarStyled = styled.input`
   margin-left: auto;
   height: 25px;
   margin-top: 10px;
+`;
+
+export const ProductDetails = styled.div`
+display: block;
+margin-right: auto;
+  margin-left: auto;
+  background-color: #edf2f4;
+  height: 100px;
+  width: 200px;
+  border-radius: 5px;
+  h1 {
+    padding-top: auto;
+    text-align: center
+  }
+  img {
+    align: center;
+    height: 200px;
+    width: 200px;
+    style: float:left;
+  }
+  p{
+    style: float:right;
+  }
 `;

@@ -17,7 +17,11 @@ const GoodsList = (props) => {
         product.price.toString().includes(query)
     )
     .map((product) => (
-      <GoodsItems product={product} setProduct={props.setProduct} />
+      <GoodsItems
+        product={product}
+        setProduct={props.setProduct}
+        key={product.id}
+      />
     ));
   return (
     <div>

@@ -4,7 +4,6 @@ import GoodsList from "./components/GoodsList";
 import { GolbalStyle, ShopImage, SubTitle, Title, ThemeButton } from "./styles";
 import { useState } from "react";
 import GoodsDetail from "./components/GoodsDetail";
-import products from "./products";
 
 const theme = {
   light: {
@@ -19,13 +18,21 @@ const theme = {
 
 function App() {
   const [webTheme, changeTheme] = useState("light");
-  const [product, setProduct] = useState(products[0]);
+  const [product, setProduct] = useState();
   const toggleTheme = () => {
     if (webTheme === "light") {
       changeTheme("dark");
     } else {
       changeTheme("light");
     }
+  };
+
+  const setView = () => {
+    return product ? (
+      <GoodsDetail product={product} />
+    ) : (
+      <GoodsList setProduct={setProduct} />
+    );
   };
   return (
     <ThemeProvider theme={theme[webTheme]}>
@@ -39,8 +46,7 @@ function App() {
         src="https://www.nelsonworldwide.com/wp-content/uploads/2019/09/dicks-sporting-goods-06.jpg"
         alt="shop"
       />
-      <GoodsList setProduct={setProduct} />
-      <GoodsDetail product={product} />
+      {setView()}
     </ThemeProvider>
   );
 }
