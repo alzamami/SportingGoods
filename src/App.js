@@ -4,21 +4,27 @@ import GoodsList from "./components/GoodsList";
 import { GolbalStyle, ShopImage, SubTitle, Title, ThemeButton } from "./styles";
 import { useState } from "react";
 import GoodsDetail from "./components/GoodsDetail";
+import products from "./products";
 
 const theme = {
   light: {
     mainColor: "#1d3557",
     backgroundColor: "white",
+    buttonColor: "red",
   },
   dark: {
     mainColor: "white",
     backgroundColor: "#1d3557",
+    buttonColor: "red",
   },
 };
 
 function App() {
   const [webTheme, changeTheme] = useState("light");
   const [product, setProduct] = useState();
+
+  const [_products, setProducts] = useState(products);
+
   const toggleTheme = () => {
     if (webTheme === "light") {
       changeTheme("dark");
@@ -27,13 +33,29 @@ function App() {
     }
   };
 
+  const productDelete = (productId) => {
+    const updatedProducts = _products.filter(
+      (product) => product.id !== productId
+    );
+    setProducts(updatedProducts);
+  };
+
   const setView = () => {
     return product ? (
-      <GoodsDetail product={product} />
+      <GoodsDetail
+        product={product}
+        setProduct={setProduct}
+        productDelete={productDelete}
+      />
     ) : (
-      <GoodsList setProduct={setProduct} />
+      <GoodsList
+        setProduct={setProduct}
+        products={_products}
+        productDelete={productDelete}
+      />
     );
   };
+
   return (
     <ThemeProvider theme={theme[webTheme]}>
       <GolbalStyle />

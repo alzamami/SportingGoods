@@ -1,6 +1,4 @@
 import { useState } from "react";
-// products data
-import products from "../products";
 //styling for the items
 import { ListWrapper } from "../styles";
 
@@ -10,7 +8,8 @@ import SearchBar from "./SearchBar";
 
 const GoodsList = (props) => {
   const [query, setQuery] = useState("");
-  const goodsList = products
+
+  const goodsList = props.products
     .filter(
       (product) =>
         product.name.toLowerCase().includes(query.toLowerCase()) ||
@@ -21,6 +20,7 @@ const GoodsList = (props) => {
         product={product}
         setProduct={props.setProduct}
         key={product.id}
+        productDelete={props.productDelete}
       />
     ));
   return (

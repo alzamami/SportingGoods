@@ -74,24 +74,29 @@ export const SearchBarStyled = styled.input`
 `;
 
 export const ProductDetails = styled.div`
-display: block;
-margin-right: auto;
+  display: block;
+  margin-right: auto;
   margin-left: auto;
-  background-color: #edf2f4;
-  height: 100px;
-  width: 200px;
-  border-radius: 5px;
+  width: 40%;
   h1 {
-    padding-top: auto;
-    text-align: center
+    text-align: center;
   }
   img {
-    align: center;
-    height: 200px;
-    width: 200px;
-    style: float:left;
+    height: 250px;
+    width: 250px;
+    float: left;
+    margin-right: 25px;
+    border-radius: 10px;
   }
-  p{
-    style: float:right;
+  p {
+    ${"" /* text-align: left; */}
+    vertical-align: middle:
   }
+`;
+
+export const DeleteButtonStyled = styled.p`
+  color: ${(props) => props.theme.buttonColor};
+  text-align: center;
+  font-weight: 500;
+  cursor: pointer;
 `;
