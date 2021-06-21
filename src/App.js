@@ -44,7 +44,7 @@ function App() {
       <GolbalStyle />
       <NavBar webTheme={webTheme} toggleTheme={toggleTheme} />
       <Switch>
-        <Route path="/products/:productSlug">
+        <Route path={"/products/:productSlug"}>
           <GoodsDetail products={_products} productDelete={productDelete} />
         </Route>
         <Route path="/products">
