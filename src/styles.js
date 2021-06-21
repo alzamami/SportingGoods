@@ -1,3 +1,4 @@
+import { Link, NavLink } from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
 
 export const GolbalStyle = createGlobalStyle`
@@ -5,6 +6,21 @@ body {
     background-color: ${(props) => props.theme.backgroundColor};
     color: ${(props) => props.theme.mainColor}
 }
+`;
+
+export const NavProduct = styled(NavLink)`
+  color: ${(props) => props.theme.mainColor};
+
+  &.active {
+    color: black;
+  }
+`;
+
+export const Logo = styled(Link)`
+  padding: 10px;
+  img {
+    width: 100px;
+  }
 `;
 
 export const Title = styled.h1`
@@ -54,8 +70,8 @@ export const ThemeButton = styled.button`
   margin: 20px;
   background-color: ${(props) => props.theme.mainColor};
   color: ${(props) => props.theme.backgroundColor};
-  width: 7.5%;
-  height: 35px;
+  width: 50%;
+  height: 100%;
   border-radius: 5px;
   font-size: 15px;
   text-align: center;

@@ -1,11 +1,12 @@
 import { ThemeProvider } from "styled-components";
 import "./App.css";
 import GoodsList from "./components/GoodsList";
-import { GolbalStyle, ShopImage, SubTitle, Title, ThemeButton } from "./styles";
-import { useState } from "react";
 import GoodsDetail from "./components/GoodsDetail";
+import { GolbalStyle, ShopImage, SubTitle, Title } from "./styles";
+import { useState } from "react";
 import products from "./products";
-
+import { Route, Switch } from "react-router";
+import NavBar from "./components/NavBar";
 const theme = {
   light: {
     mainColor: "#1d3557",
@@ -21,8 +22,6 @@ const theme = {
 
 function App() {
   const [webTheme, changeTheme] = useState("light");
-  const [product, setProduct] = useState();
-
   const [_products, setProducts] = useState(products);
 
   const toggleTheme = () => {
@@ -40,35 +39,26 @@ function App() {
     setProducts(updatedProducts);
   };
 
-  const setView = () => {
-    return product ? (
-      <GoodsDetail
-        product={product}
-        setProduct={setProduct}
-        productDelete={productDelete}
-      />
-    ) : (
-      <GoodsList
-        setProduct={setProduct}
-        products={_products}
-        productDelete={productDelete}
-      />
-    );
-  };
-
   return (
     <ThemeProvider theme={theme[webTheme]}>
       <GolbalStyle />
-      <ThemeButton onClick={toggleTheme}>
-        {webTheme === "light" ? "Light" : "Dark"} Theme
-      </ThemeButton>
-      <Title>Zamami Sports</Title>
-      <SubTitle>All your needs in one place</SubTitle>
-      <ShopImage
-        src="https://www.nelsonworldwide.com/wp-content/uploads/2019/09/dicks-sporting-goods-06.jpg"
-        alt="shop"
-      />
-      {setView()}
+      <NavBar webTheme={webTheme} toggleTheme={toggleTheme} />
+      <Switch>
+        <Route path="/products/:productSlug">
+          <GoodsDetail products={_products} productDelete={productDelete} />
+        </Route>
+        <Route path="/products">
+          <GoodsList products={_products} productDelete={productDelete} />
+        </Route>
+        <Route exact path="/">
+          <Title>Zamami Sports</Title>
+          <SubTitle>All your needs in one place</SubTitle>
+          <ShopImage
+            src="https://www.nelsonworldwide.com/wp-content/uploads/2019/09/dicks-sporting-goods-06.jpg"
+            alt="shop"
+          />
+        </Route>
+      </Switch>
     </ThemeProvider>
   );
 }
