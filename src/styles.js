@@ -1,11 +1,27 @@
 import { Link, NavLink } from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
+import { BsPlusSquare } from "react-icons/bs";
 
 export const GolbalStyle = createGlobalStyle`
 body {
     background-color: ${(props) => props.theme.backgroundColor};
     color: ${(props) => props.theme.mainColor}
 }
+`;
+
+export const BsPlusSquareStyled = styled(BsPlusSquare)`
+  color: ${(props) => props.theme.mainColor};
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+`;
+
+export const UpdateButtonStyled = styled.p`
+  color: grey;
+  text-align: center;
+  font-weight: 500;
+  cursor: pointer;
 `;
 
 export const NavProduct = styled(NavLink)`

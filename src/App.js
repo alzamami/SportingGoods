@@ -4,7 +4,6 @@ import GoodsList from "./components/GoodsList";
 import GoodsDetail from "./components/GoodsDetail";
 import { GolbalStyle, ShopImage, SubTitle, Title } from "./styles";
 import { useState } from "react";
-import products from "./products";
 import { Route, Switch } from "react-router";
 import NavBar from "./components/NavBar";
 const theme = {
@@ -22,7 +21,6 @@ const theme = {
 
 function App() {
   const [webTheme, changeTheme] = useState("light");
-  const [_products, setProducts] = useState(products);
 
   const toggleTheme = () => {
     if (webTheme === "light") {
@@ -32,23 +30,16 @@ function App() {
     }
   };
 
-  const productDelete = (productId) => {
-    const updatedProducts = _products.filter(
-      (product) => product.id !== productId
-    );
-    setProducts(updatedProducts);
-  };
-
   return (
     <ThemeProvider theme={theme[webTheme]}>
       <GolbalStyle />
       <NavBar webTheme={webTheme} toggleTheme={toggleTheme} />
       <Switch>
         <Route path={"/products/:productSlug"}>
-          <GoodsDetail products={_products} productDelete={productDelete} />
+          <GoodsDetail />
         </Route>
         <Route path="/products">
-          <GoodsList products={_products} productDelete={productDelete} />
+          <GoodsList />
         </Route>
         <Route exact path="/">
           <Title>Zamami Sports</Title>

@@ -1,10 +1,12 @@
 import { ProductDetails } from "../styles";
 import { DeleteButton } from "./buttons/DeleteButton";
 import { Link, Redirect, useParams } from "react-router-dom";
+import productStore from "../stores/productStore";
+import { observer } from "mobx-react";
 
-const GoodsDetail = (props) => {
+const GoodsDetail = () => {
   const productSlug = useParams().productSlug;
-  const product = props.products.find(
+  const product = productStore.products.find(
     (product) => product.slug === productSlug
   );
 
@@ -18,15 +20,12 @@ const GoodsDetail = (props) => {
       <p>{product.price} KD</p>
       <p>{product.description}</p>
       <Link to="/products">
-        <button>Back</button>{" "}
+        <button>Back</button>
       </Link>
 
-      <DeleteButton
-        productDelete={props.productDelete}
-        productId={product.id}
-      />
+      <DeleteButton productId={product.id} />
     </ProductDetails>
   );
 };
 
-export default GoodsDetail;
+export default observer(GoodsDetail);
