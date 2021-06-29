@@ -8,7 +8,6 @@ const UpdateButton = (props) => {
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
 
-  const handleUpdate = (openModal) => {};
   return (
     <div>
       <UpdateButtonStyled onClick={openModal}> Update </UpdateButtonStyled>
