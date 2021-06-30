@@ -1,5 +1,5 @@
 import React from "react";
-import { ThemeButton, NavProduct, Logo } from "../styles";
+import { ThemeButton, NavProduct, Logo, HiTemplateStyled } from "../styles";
 import lightlogo from "../logos/light-logo.png";
 import darklogo from "../logos/dark-logo.png";
 
@@ -24,12 +24,12 @@ const NavBar = (props) => {
             alt="name"
           />
         </Logo>
-        <ul className="navbar-nav me-auto mt-2 mt-lg-0">
-          <ThemeButton onClick={props.toggleTheme}>
-            {props.webTheme === "light" ? "Light" : "Dark"} Theme
-          </ThemeButton>
+        <ThemeButton onClick={props.toggleTheme}>
+          {props.webTheme === "light" ? "Light" : "Dark"} Theme
+        </ThemeButton>
+        <ul className="navbar-nav ms-auto mt-2 mt-lg-0">
           <NavProduct to="/products" className="nav-link ms-auto">
-            Products
+            <HiTemplateStyled />
           </NavProduct>
         </ul>
       </div>

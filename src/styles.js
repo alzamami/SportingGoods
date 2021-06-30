@@ -1,6 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
 import { BsPlusSquare } from "react-icons/bs";
+import { HiTemplate } from "react-icons/hi";
 
 export const GolbalStyle = createGlobalStyle`
 body {
@@ -15,6 +16,13 @@ export const BsPlusSquareStyled = styled(BsPlusSquare)`
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
+`;
+export const HiTemplateStyled = styled(HiTemplate)`
+  color: ${(props) => props.theme.mainColor};
+  display: flex;
+  width: 50px;
+  height: auto;
+  margin-bottom: 20px;
 `;
 
 export const UpdateButtonStyled = styled.p`
@@ -86,7 +94,7 @@ export const ThemeButton = styled.button`
   margin: 20px;
   background-color: ${(props) => props.theme.mainColor};
   color: ${(props) => props.theme.backgroundColor};
-  width: 50%;
+  width: 10%;
   height: 100%;
   border-radius: 5px;
   font-size: 15px;
