@@ -35,16 +35,25 @@ class ProductStore {
     }
   };
 
-  updateProduct = (updatedProduct) => {
-    const product = this.products.find(
-      (product) => product.id === updatedProduct.id
-    );
-    product.name = updatedProduct.name;
-    product.price = updatedProduct.price;
-    product.description = updatedProduct.description;
-    product.image = updatedProduct.image;
+  updateProduct = async (updatedProduct) => {
+    try {
+      await axios.put(
+        `http://localhost:8000/products/${updatedProduct.id}`,
+        updatedProduct
+      );
 
-    product.slug = slugify(updatedProduct.name);
+      const product = this.products.find(
+        (product) => product.id === updatedProduct.id
+      );
+      product.name = updatedProduct.name;
+      product.price = updatedProduct.price;
+      product.description = updatedProduct.description;
+      product.image = updatedProduct.image;
+
+      product.slug = slugify(updatedProduct.name);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   fetchProducts = async () => {
