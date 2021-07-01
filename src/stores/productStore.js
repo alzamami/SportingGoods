@@ -45,11 +45,7 @@ class ProductStore {
       const product = this.products.find(
         (product) => product.id === updatedProduct.id
       );
-      product.name = updatedProduct.name;
-      product.price = updatedProduct.price;
-      product.description = updatedProduct.description;
-      product.image = updatedProduct.image;
-
+      for (const key in updatedProduct) product[key] = updatedProduct[key];
       product.slug = slugify(updatedProduct.name);
     } catch (error) {
       console.error(error);
