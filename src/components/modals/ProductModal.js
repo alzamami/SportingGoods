@@ -17,6 +17,9 @@ const ProductModal = (props) => {
   const handleChange = (event) => {
     setProduct({ ...product, [event.target.name]: event.target.value });
   };
+  const handleImage = (event) => {
+    setProduct({ ...product, image: event.target.files[0] });
+  };
 
   const handleSumbit = (event) => {
     props.oldProduct
@@ -70,11 +73,10 @@ const ProductModal = (props) => {
           <div className="mb-3">
             <label className="form-label">Image</label>
             <input
-              type="text"
+              type="file"
               className="form-control"
               name="image"
-              onChange={handleChange}
-              value={product.image}
+              onChange={handleImage}
             />
           </div>
           <button type="submit">{props.oldProduct ? "Update" : "Add"}</button>
