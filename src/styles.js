@@ -140,3 +140,13 @@ export const DeleteButtonStyled = styled.p`
   font-weight: 500;
   cursor: pointer;
 `;
+export const SignupButtonStyled = styled.p`
+  color: ${(props) => props.theme.mainColor};
+  text-align: center;
+  font-weight: 500;
+  cursor: pointer;
+`;
+
+export const StoreItemImage = styled.img`
+  width: 20em;
+`;

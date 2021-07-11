@@ -6,6 +6,8 @@ import { GolbalStyle, ShopImage, SubTitle, Title } from "./styles";
 import { useState } from "react";
 import { Route, Switch } from "react-router";
 import NavBar from "./components/NavBar";
+import StoreList from "./components/StoreList";
+import StoreDetail from "./components/StoreDetail";
 const theme = {
   light: {
     mainColor: "#1d3557",
@@ -40,6 +42,12 @@ function App() {
         </Route>
         <Route path="/products">
           <GoodsList />
+        </Route>
+        <Route path={"/stores/:storeSlug"}>
+          <StoreDetail />
+        </Route>
+        <Route path="/stores">
+          <StoreList />
         </Route>
         <Route exact path="/">
           <Title>Zamami Sports</Title>

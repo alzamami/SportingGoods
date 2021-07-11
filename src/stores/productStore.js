@@ -1,5 +1,5 @@
 import { makeAutoObservable } from "mobx";
-import axios from "axios";
+import instance from "./instance";
 
 class ProductStore {
   products = [];
@@ -10,7 +10,7 @@ class ProductStore {
 
   fetchProducts = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/products");
+      const response = await instance.get("/products");
       this.products = response.data;
     } catch (error) {
       console.error("fetchProducts", error);
@@ -19,7 +19,7 @@ class ProductStore {
 
   productDelete = async (productId) => {
     try {
-      await axios.delete(`http://localhost:8000/products/${productId}`);
+      await instance.delete(`/products/${productId}`);
 
       const updatedProducts = this.products.filter(
         (product) => product.id !== productId
@@ -34,10 +34,7 @@ class ProductStore {
     try {
       const formData = new FormData();
       for (const key in newProduct) formData.append(key, newProduct[key]);
-      const response = await axios.post(
-        "http://localhost:8000/products",
-        formData
-      );
+      const response = await instance.post("/products", formData);
       this.products.push(response.data);
     } catch (error) {
       console.error(error);
@@ -49,8 +46,8 @@ class ProductStore {
       const formData = new FormData();
       for (const key in updatedProduct)
         formData.append(key, updatedProduct[key]);
-      const response = await axios.put(
-        `http://localhost:8000/products/${updatedProduct.id}`,
+      const response = await instance.put(
+        `/products/${updatedProduct.id}`,
         formData
       );
 

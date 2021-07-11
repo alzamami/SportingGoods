@@ -2,6 +2,7 @@ import React from "react";
 import { ThemeButton, NavProduct, Logo, HiTemplateStyled } from "../styles";
 import lightlogo from "../logos/light-logo.png";
 import darklogo from "../logos/dark-logo.png";
+import { SignupButton } from "./buttons/SignupButton";
 
 const NavBar = (props) => {
   return (
@@ -31,6 +32,10 @@ const NavBar = (props) => {
           <NavProduct to="/products" className="nav-link ms-auto">
             <HiTemplateStyled />
           </NavProduct>
+          <NavProduct to="/stores" className="nav-link ms-auto">
+            Stores
+          </NavProduct>
+          <SignupButton />
         </ul>
       </div>
     </nav>
