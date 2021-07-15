@@ -1,13 +1,12 @@
 import { ThemeProvider } from "styled-components";
 import "./App.css";
-import GoodsList from "./components/GoodsList";
-import GoodsDetail from "./components/GoodsDetail";
-import { GolbalStyle, ShopImage, SubTitle, Title } from "./styles";
+
+import { GolbalStyle } from "./styles";
 import { useState } from "react";
-import { Route, Switch } from "react-router";
+
 import NavBar from "./components/NavBar";
-import StoreList from "./components/StoreList";
-import StoreDetail from "./components/StoreDetail";
+import Routes from "./components/Routes";
+
 const theme = {
   light: {
     mainColor: "#1d3557",
@@ -36,28 +35,7 @@ function App() {
     <ThemeProvider theme={theme[webTheme]}>
       <GolbalStyle />
       <NavBar webTheme={webTheme} toggleTheme={toggleTheme} />
-      <Switch>
-        <Route path={"/products/:productSlug"}>
-          <GoodsDetail />
-        </Route>
-        <Route path="/products">
-          <GoodsList />
-        </Route>
-        <Route path={"/stores/:storeSlug"}>
-          <StoreDetail />
-        </Route>
-        <Route path="/stores">
-          <StoreList />
-        </Route>
-        <Route exact path="/">
-          <Title>Zamami Sports</Title>
-          <SubTitle>All your needs in one place</SubTitle>
-          <ShopImage
-            src="https://www.nelsonworldwide.com/wp-content/uploads/2019/09/dicks-sporting-goods-06.jpg"
-            alt="shop"
-          />
-        </Route>
-      </Switch>
+      <Routes />
     </ThemeProvider>
   );
 }

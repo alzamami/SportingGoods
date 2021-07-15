@@ -1,21 +1,26 @@
 import { observer } from "mobx-react";
 import { Link } from "react-router-dom";
+import authStore from "../stores/authStore";
 import { SubTitle1, ProductWrapper, ImageSize } from "../styles";
 
 import { DeleteButton } from "./buttons/DeleteButton";
 import UpdateButton from "./buttons/UpdateButton";
 
-const GoodsItems = (props) => {
+const GoodsItems = ({ product }) => {
   return (
-    <ProductWrapper id={props.id}>
-      <Link to={`/products/${props.product.slug}`}>
-        <ImageSize alt={props.product.name} src={props.product.image} />
+    <ProductWrapper>
+      <Link to={`/products/${product.slug}`}>
+        <ImageSize alt={product.name} src={product.image} />
       </Link>
 
-      <SubTitle1>{props.product.name}</SubTitle1>
-      <SubTitle1>{props.product.price} KD</SubTitle1>
-      <UpdateButton product={props.product} />
-      <DeleteButton productId={props.product.id} />
+      <SubTitle1>{product.name}</SubTitle1>
+      <SubTitle1>{product.price} KD</SubTitle1>
+      {authStore.user && (
+        <>
+          <UpdateButton product={product} />
+          <DeleteButton productId={product.id} />
+        </>
+      )}
     </ProductWrapper>
   );
 };

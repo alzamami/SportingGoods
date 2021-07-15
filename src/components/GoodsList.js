@@ -6,19 +6,20 @@ import GoodsItems from "./GoodsItems";
 //Search bar
 import SearchBar from "./SearchBar";
 
-import productStore from "../stores/productStore";
-
 import { observer } from "mobx-react";
 import ProductModal from "./modals/ProductModal";
+import authStore from "../stores/authStore";
+import productStore from "../stores/productStore";
 
-const GoodsList = () => {
+const GoodsList = ({ products, store }) => {
   const [query, setQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
+  if (productStore.loading) return <p> loading </p>;
 
-  const goodsList = productStore.products
+  const goodsList = products
     .filter(
       (product) =>
         product.name.toLowerCase().includes(query.toLowerCase()) ||
@@ -28,8 +29,9 @@ const GoodsList = () => {
   return (
     <div>
       <SearchBar setQuery={setQuery} />
-      <BsPlusSquareStyled size="25px" onClick={openModal} />
-      <ProductModal isOpen={isOpen} closeModal={closeModal} />
+
+      {authStore.user && <BsPlusSquareStyled size="25px" onClick={openModal} />}
+      <ProductModal isOpen={isOpen} closeModal={closeModal} store={store} />
       <ListWrapper>{goodsList}</ListWrapper>
     </div>
   );

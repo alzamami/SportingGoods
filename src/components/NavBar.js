@@ -3,6 +3,9 @@ import { ThemeButton, NavProduct, Logo, HiTemplateStyled } from "../styles";
 import lightlogo from "../logos/light-logo.png";
 import darklogo from "../logos/dark-logo.png";
 import { SignupButton } from "./buttons/SignupButton";
+import { SigninButton } from "./buttons/SigninButton";
+import authStore from "../stores/authStore";
+import { observer } from "mobx-react";
 
 const NavBar = (props) => {
   return (
@@ -35,11 +38,21 @@ const NavBar = (props) => {
           <NavProduct to="/stores" className="nav-link ms-auto">
             Stores
           </NavProduct>
-          <SignupButton />
+          {authStore.user ? (
+            <>
+              <p>hello {authStore.user.username}</p>
+              <button onClick={authStore.signout}> Signout </button>
+            </>
+          ) : (
+            <>
+              <SigninButton />
+              <SignupButton />
+            </>
+          )}
         </ul>
       </div>
     </nav>
   );
 };
 
-export default NavBar;
+export default observer(NavBar);

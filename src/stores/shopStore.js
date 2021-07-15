@@ -3,6 +3,8 @@ import instance from "./instance";
 
 class ShopStore {
   stores = [];
+  loading = true;
+
   constructor() {
     makeAutoObservable(this);
   }
@@ -11,7 +13,7 @@ class ShopStore {
     try {
       const response = await instance.get("/stores");
       this.stores = response.data;
-      console.log(this.stores);
+      this.loading = false;
     } catch (error) {
       console.error("fetchStores", error);
     }
@@ -22,6 +24,7 @@ class ShopStore {
       const formData = new FormData();
       for (const key in newStore) formData.append(key, newStore[key]);
       const response = await instance.post("/stores", formData);
+      response.data.stores = [];
       this.stores.push(response.data);
     } catch (error) {
       console.error(error);

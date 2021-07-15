@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { UpdateButtonStyled } from "../../styles";
 import ProductModal from "../modals/ProductModal";
 

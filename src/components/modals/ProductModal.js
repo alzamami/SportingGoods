@@ -22,10 +22,11 @@ const ProductModal = (props) => {
   };
 
   const handleSumbit = (event) => {
+    event.preventDefault();
+
     props.oldProduct
       ? productStore.updateProduct(product)
-      : productStore.createProduct(product);
-    event.preventDefault();
+      : productStore.createProduct(product, props.store);
     props.closeModal();
   };
   return (

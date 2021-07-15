@@ -6,6 +6,8 @@ import { observer } from "mobx-react";
 
 const GoodsDetail = () => {
   const productSlug = useParams().productSlug;
+  if (productStore.loading) return <p> loading </p>;
+
   const product = productStore.products.find(
     (product) => product.slug === productSlug
   );
